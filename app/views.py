@@ -69,7 +69,7 @@ Values = [
 	},
 	{
 		'Count':1,
-		'RPM':1,
+		'RPM':2,
 		'ECT':255
 	}
 ]
