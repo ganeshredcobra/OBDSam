@@ -66,6 +66,11 @@ Values = [
 		'Count':1,
 		'RPM':1,
 		'ECT':1
+	},
+	{
+		'Count':1,
+		'RPM':1,
+		'ECT':255
 	}
 ]
 
