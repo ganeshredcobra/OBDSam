@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect ,jsonify
+from flask import render_template, flash, redirect ,jsonify, url_for
 from app import app
 from .forms import LoginForm
 from flask import abort
@@ -8,24 +8,19 @@ from flask import request
 
 
 @app.route('/')
-@app.route('/index')
-def index():
-    user = {'nickname': 'Visitor'}  # fake user
-    posts = [  # fake array of posts
-        { 
-            'author': {'nickname': 'John'}, 
-            'body': 'Beautiful day in Portland!' 
-        },
-        { 
-            'author': {'nickname': 'Susan'}, 
-            'body': 'The Avengers movie was so cool!' 
-        }
-    ]
-    return render_template("index.html",
-                           title='Home',
-                           user=user,
-                           posts=posts)
-	 
+@app.route('/index', methods=['GET', 'POST'])
+def Login():
+	user = {'nickname': 'Visitor'}  # fake user
+	posts = [{'author': {'nickname': 'Tachometer'},'body': 'RPM Values!'},{'author': {'nickname': 'ECT Sensor'},'body': 'ECT Temp!'}]
+	error = None
+    	if request.method == 'POST':
+        	if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            		error = 'Invalid Credentials. Please try again.'
+        	else:
+			return render_template("index.html",title='Home',user=user,posts=posts)
+	return render_template('login.html', error=error)
+ 
+    
 @app.route("/members/<string:name>/")
 def getMember(name):
     return '<h1>Hello {{%s}}</h1>'%name
@@ -116,3 +111,19 @@ def members():
 @app.route('/getvals', methods=['GET'])
 def get_vals():
     return jsonify({'VALS': Values})
+"""
+@app.route('/signin', methods=['GET', 'POST'])
+def Login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+		return redirect(url_for('index'))
+    return render_template('login.html', error=error)
+#return render_template('login.html')
+"""
+@app.route('/logout')
+def logout():
+	return redirect(url_for('Login'))
+
