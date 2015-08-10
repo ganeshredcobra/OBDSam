@@ -130,4 +130,8 @@ def logout():
 @app.route('/maps')
 def map():
     return render_template("maps.html")
+    
+@app.route('/charts')
+def plot():
+    return render_template("charts.html",VALS=Values)
 
