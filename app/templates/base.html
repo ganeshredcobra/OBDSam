@@ -6,6 +6,7 @@
     <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+ 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   
@@ -21,11 +22,11 @@
 	<ul class="nav nav-tabs">
   <li role="presentation" class="active"><a href="#">Home</a></li>
   <li role="presentation"><a href="#">Profile</a></li>
-  <li role="presentation"><a href="#">Messages</a></li>
+  <li role="presentation"><a href="/maps">Maps</a></li>
   <li role="presentation"> <a href="/logout">Logout</a></li>
 </ul>  
 	  
-    <div>Microblog: <a href="/index">Home</a> <a href="/members">Sensors</a></div>
+    <div>Microblog: <a href="#">Home</a> <a href="/members">Sensors</a></div>
     <hr>
      {% with messages = get_flashed_messages() %}
       {% if messages %}
