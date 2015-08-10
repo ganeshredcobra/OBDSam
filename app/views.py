@@ -127,3 +127,7 @@ def Login():
 def logout():
 	return redirect(url_for('Login'))
 
+@app.route('/maps')
+def map():
+    return render_template("maps.html")
+
